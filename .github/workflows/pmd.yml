@@ -1,0 +1,23 @@
+name: Run PMD
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  default:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install PMD
+        run: |
+          npm install --global pmd-bin
+          pmd --version
+      - name: Run PMD
+        run: |
+          pmd -language apex -R apex-pmd-ruleset.xml -dir force-app

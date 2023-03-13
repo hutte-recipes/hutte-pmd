@@ -1,0 +1,12 @@
+name: main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pmd:
+    name: Run PMD Workflow
+    uses: ./.github/workflows/pmd.yml
+    secrets: inherit
