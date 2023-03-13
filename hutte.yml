@@ -14,8 +14,10 @@ pull_script: |
 
 custom_scripts:
   # This scripts will be displayed on the scratch org's page
-  pmd:
-    'Run PMD': |
-      npm install --global pmd-bin
-      pmd --version
-      pmd -language apex -R apex-pmd-ruleset.xml -dir force-app
+  scratch_org:
+    'Run PMD':
+      description: "Install and run PMD static code analysis"
+      run: |
+        npm install --global pmd-bin
+        pmd --version
+        pmd -language apex -R apex-pmd-ruleset.xml -dir force-app
