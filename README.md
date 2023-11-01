@@ -7,11 +7,9 @@
 - a GitHub repository with a valid sfdx project
 - a `hutte.yml` file (e.g. the default one shown in the `CONFIGURATION` tab)
 
-## Steps
+## Step 1: Create PMD Ruleset
 
-### Step 1
-
-Create the following 3 files:
+Create the following file:
 
 `apex-pmd-ruleset.xml`
 
@@ -30,6 +28,10 @@ Create the following 3 files:
 
 </ruleset>
 ```
+
+## Step 2: Create Github Workflows
+
+Create the following two file:
 
 `.github/workflows/pmd.yml`
 
@@ -76,16 +78,9 @@ jobs:
     secrets: inherit
 ```
 
-### Step 2
+## Step 3: Validate
 
-- Edit the `hutte.yml` file in your default branch
-- Add the following custom script/button named `Run PMD` in `custom_scripts > scratch_org`
+Validate
 
-```yaml
-custom_scripts:
-  scratch_org:
-    "Run PMD": |
-      npm install --global pmd-bin
-      pmd --version
-      pmd -language apex -R apex-pmd-ruleset.xml -dir force-app
-```
+- Open a Pull Request
+- Assert that PMD ran
