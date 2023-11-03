@@ -31,7 +31,7 @@ Create the following file:
 
 ## Step 2: Create Github Workflows
 
-Create the following two file:
+Create the following two files:
 
 `.github/workflows/pmd.yml`
 
